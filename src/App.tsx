@@ -8,26 +8,31 @@ export const App: React.FC = () => {
   const [goods, setGoods] = useState<Good[]>([]);
 
   const handleLoadAll = () => {
-    goodsAPI.getAll().then(setGoods);
+    goodsAPI
+      .getAll()
+      .then(setGoods)
+      .catch(() => {});
   };
 
   const handleLoadFirstFive = () => {
-    goodsAPI.get5First().then(setGoods);
+    goodsAPI
+      .get5First()
+      .then(setGoods)
+      .catch(() => {});
   };
 
   const handleLoadRed = () => {
-    goodsAPI.getRedGoods().then(setGoods);
+    goodsAPI
+      .getRedGoods()
+      .then(setGoods)
+      .catch(() => {});
   };
 
   return (
     <div className="App">
       <h1>Dynamic list of Goods</h1>
 
-      <button
-        type="button"
-        data-cy="all-button"
-        onClick={handleLoadAll}
-      >
+      <button type="button" data-cy="all-button" onClick={handleLoadAll}>
         Load all goods
       </button>
 
@@ -39,11 +44,7 @@ export const App: React.FC = () => {
         Load 5 first goods
       </button>
 
-      <button
-        type="button"
-        data-cy="red-button"
-        onClick={handleLoadRed}
-      >
+      <button type="button" data-cy="red-button" onClick={handleLoadRed}>
         Load red goods
       </button>
 
@@ -51,4 +52,3 @@ export const App: React.FC = () => {
     </div>
   );
 };
-
